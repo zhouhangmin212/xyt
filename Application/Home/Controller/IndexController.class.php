@@ -28,11 +28,8 @@ class IndexController extends Controller
                     $user->add();
                     $this->success('Welcome,'. var_dump($result));
                 }
-                
-
             else
                 $this->error($user->getError());
-    		
     	}
     }
 
@@ -42,7 +39,7 @@ class IndexController extends Controller
     		$this->display('login');
     	}
     	else {
-    		$user = M('User');
+    		$user = D('User');
     		$post = array(
     			'account' => I('post.account'),
     			'password'=> I('post.password')
@@ -52,5 +49,15 @@ class IndexController extends Controller
     		else if ($data['password']!=$post['password']) $this->error('Password Wrong!');
     		else $this->success('Well Done!','Index/index');
     	}
+    }
+
+    public function sms($phone)
+    {
+        $SMS  = D('SMSend');
+        $rand = rand(1000,9999);
+        $_SESSION['verify'] = $rand;
+        $post_data = "account=wsx248&password=wsxwsx&mobile=".$phone."&content=".rawurlencode("您的订单编码：".$rand."。如需帮助请联系客服。");
+        $target = "http://sms.106jiekou.com/utf8/sms.aspx";
+        $result = $SMS->Post($post_data,$target);
     }
 }
