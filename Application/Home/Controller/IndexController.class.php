@@ -17,16 +17,16 @@ class IndexController extends Controller
     	}
     	else {
     		$user = D('User');
-            $date['account'] = I('post.account');
-            $date['password'] = I('post.password');
-            $date['phone'] = I('post.phone');
-            $date['repassword'] = I('post.repassword');
-    		$result = $user->create($date);
+            // $date['account'] = I('post.account');
+            // $date['password'] = I('post.password');
+            // $date['phone'] = I('post.phone');
+            // $date['repassword'] = I('post.repassword');
+    		$result = $user->create();
     		if ($result)
-    			//$this->success('Well Done!','Index/index');
+    			// $this->success('Well Done!','Index/index');
                 {
                     $user->add();
-                    $this->success('Welcome,'. var_dump($result));
+                    $this->success('Welcome');
                 }
             else
                 $this->error($user->getError());
