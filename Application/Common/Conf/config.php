@@ -5,7 +5,7 @@ return array(
 	'DB_TYPE' => 'MYSQL',
 	'DB_PORT' => '3306',
 	'DB_USER' => 'root',
-	'DB_PWD'  => '212829',
+	'DB_PWD'  => '',
 	'DB_NAME' => 'xyt',
 	'DB_CHARSET'=> 'utf8',  
 );	
